@@ -1,4 +1,4 @@
-import { FancyLogOptions } from "./types";
+import { FancyLogOptions } from "@/types";
 
 export const themes: Record<string, FancyLogOptions> = {
   badge: {

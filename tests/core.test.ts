@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { combo, multi } from "../src/core";
+import { combo, multi } from "@/core";
 
 describe("combo/multi", () => {
   it("multi concatenates segments with a gap", () => {

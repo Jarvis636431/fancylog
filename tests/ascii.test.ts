@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { renderAscii } from "../src/ascii";
+import { renderAscii } from "@/ascii";
 
 describe("renderAscii", () => {
   it("renders known glyphs with 7 lines", () => {

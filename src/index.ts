@@ -1,5 +1,5 @@
-import { log, group, badge, banner, logo, combo, multi, createLogger } from "./core";
-import { themes, registerTheme } from "./themes";
+import { log, group, badge, banner, logo, combo, multi, createLogger } from "@/core";
+import { themes, registerTheme } from "@/themes";
 export type {
   FancyComboOptions,
   FancyMultiComboOptions,
@@ -9,7 +9,7 @@ export type {
   FancyLogFunction,
   FancyGroupFunction,
   FancyLogTheme,
-} from "./types";
+} from "@/types";
 
 const fancylog = {
   log,

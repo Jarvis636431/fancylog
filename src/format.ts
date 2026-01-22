@@ -1,5 +1,5 @@
-import { FancyLogOptions } from "./types";
-import { mergeOptions, normalizeSize } from "./utils";
+import { FancyLogOptions } from "@/types";
+import { mergeOptions, normalizeSize } from "@/utils";
 
 export function buildCss(options: FancyLogOptions): string {
   const css: string[] = [];

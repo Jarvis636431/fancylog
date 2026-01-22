@@ -1,7 +1,7 @@
-import { formatText } from "./format";
-import { themes } from "./themes";
-import { mergeOptions, printMulti, printStyled, startGroup } from "./utils";
-import { renderAscii } from "./ascii";
+import { formatText } from "@/format";
+import { themes } from "@/themes";
+import { mergeOptions, printMulti, printStyled, startGroup } from "@/utils";
+import { renderAscii } from "@/ascii";
 import {
   FancyComboOptions,
   FancyMultiComboOptions,
@@ -11,7 +11,7 @@ import {
   FancyLogOptions,
   FancyLogger,
   FancyLogTheme,
-} from "./types";
+} from "@/types";
 
 function resolveOptions(
   options?: FancyLogOptions,
