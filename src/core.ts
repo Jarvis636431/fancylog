@@ -4,6 +4,8 @@ import { mergeOptions } from "./utils";
 import { renderAscii } from "./ascii";
 import {
   FancyComboOptions,
+  FancyMultiComboOptions,
+  FancySegment,
   FancyGroupFunction,
   FancyLogFunction,
   FancyLogOptions,
@@ -64,13 +66,33 @@ export function combo(
   message: string,
   options?: FancyComboOptions
 ): void {
-  const labelOptions = resolveOptions(options?.label, "badge");
-  const textOptions = resolveOptions(options?.text);
-  const labelOut = formatText(String(label), labelOptions);
-  const textOut = formatText(String(message), textOptions);
-  const format = `${labelOut.format} ${textOut.format}`;
-  const styles = [...labelOut.styles, ...textOut.styles];
-  console.log(format, ...styles);
+  multi(
+    [
+      { text: label, options: resolveOptions(options?.label, "badge") },
+      { text: message, options: resolveOptions(options?.text) },
+    ],
+    { gap: options?.gap ?? " " }
+  );
+}
+
+export function multi(
+  segments: FancySegment[],
+  options?: FancyMultiComboOptions
+): void {
+  const gap = options?.gap ?? " ";
+  const formats: string[] = [];
+  const styles: string[] = [];
+
+  segments.forEach((segment, index) => {
+    const out = formatText(String(segment.text), segment.options || {});
+    formats.push(out.format);
+    styles.push(...out.styles);
+    if (index < segments.length - 1) {
+      formats.push(gap);
+    }
+  });
+
+  console.log(formats.join(""), ...styles);
 }
 
 export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
@@ -86,5 +108,12 @@ export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
         label: mergeOptions(defaultOptions, options?.label),
         text: mergeOptions(defaultOptions, options?.text),
       }),
+    multi: (segments, options) => {
+      const resolvedSegments = segments.map((segment) => ({
+        text: segment.text,
+        options: mergeOptions(defaultOptions, segment.options),
+      }));
+      multi(resolvedSegments, options);
+    },
   };
 }

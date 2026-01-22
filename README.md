@@ -13,7 +13,7 @@ pnpm add fancylog
 ESM:
 
 ```js
-import { log, badge, banner, logo, combo, createLogger } from "fancylog";
+import { log, badge, banner, logo, combo, multi, createLogger } from "fancylog";
 
 log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
 badge("DEBUG", { background: "#111827", color: "#38bdf8" });
@@ -22,7 +22,17 @@ logo("fancylog");
 combo("INFO", "Server started", {
   label: { background: "#0ea5e9", color: "#fff" },
   text: { color: "#0f172a" },
+  gap: " ",
 });
+
+multi(
+  [
+    { text: "API", options: { background: "#0f172a", color: "#fff", padding: "2px 6px", radius: "6px" } },
+    { text: "GET", options: { background: "#10b981", color: "#0f172a", padding: "2px 6px", radius: "6px" } },
+    { text: "/users", options: { color: "#0f172a" } },
+  ],
+  { gap: " " }
+);
 
 const ui = createLogger({
   color: "#fff",
@@ -49,6 +59,7 @@ badge(text: string, options?: FancyLogOptions): void
 banner(text: string, options?: FancyLogOptions): void
 logo(text?: string, options?: FancyLogOptions): void
 combo(label: string, message: string, options?: FancyComboOptions): void
+multi(segments: FancySegment[], options?: FancyMultiComboOptions): void
 createLogger(defaultOptions?: FancyLogOptions): FancyLogger
 ```
 
@@ -79,6 +90,16 @@ type FancyLogOptions = {
 type FancyComboOptions = {
   label?: FancyLogOptions;
   text?: FancyLogOptions;
+  gap?: string;
+};
+
+type FancySegment = {
+  text: string;
+  options?: FancyLogOptions;
+};
+
+type FancyMultiComboOptions = {
+  gap?: string;
 };
 ```
 

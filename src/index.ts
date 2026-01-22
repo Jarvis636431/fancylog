@@ -1,7 +1,9 @@
-export { log, group, badge, banner, logo, combo, createLogger } from "./core";
+export { log, group, badge, banner, logo, combo, multi, createLogger } from "./core";
 export { presets } from "./presets";
 export type {
   FancyComboOptions,
+  FancyMultiComboOptions,
+  FancySegment,
   FancyLogOptions,
   FancyLogger,
   FancyLogFunction,

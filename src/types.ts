@@ -39,9 +39,20 @@ export type FancyLogger = {
     message: string,
     options?: FancyComboOptions
   ) => void;
+  multi: (segments: FancySegment[], options?: FancyMultiComboOptions) => void;
 };
 
 export type FancyComboOptions = {
   label?: FancyLogOptions;
   text?: FancyLogOptions;
+  gap?: string;
+};
+
+export type FancySegment = {
+  text: string;
+  options?: FancyLogOptions;
+};
+
+export type FancyMultiComboOptions = {
+  gap?: string;
 };
