@@ -2,7 +2,7 @@ export function mergeOptions<T extends object, U extends object>(
   base?: T,
   overrides?: U
 ): T & U {
-  return Object.assign({}, base || {}, overrides || {});
+  return Object.assign({}, base || {}, overrides || {}) as T & U;
 }
 
 export function normalizeSize(value?: number | string): string | undefined {
