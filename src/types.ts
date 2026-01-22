@@ -1,4 +1,4 @@
-export type FancyLogPreset = "badge" | "banner" | "glow";
+export type FancyLogPreset = "badge" | "banner" | "glow" | "logo";
 
 export type FancyLogOptions = {
   preset?: FancyLogPreset;
@@ -33,4 +33,5 @@ export type FancyLogger = {
   group: FancyGroupFunction;
   badge: FancyLogFunction;
   banner: FancyLogFunction;
+  logo: (text?: string, options?: FancyLogOptions) => void;
 };

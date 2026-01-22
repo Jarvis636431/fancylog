@@ -1,4 +1,4 @@
-export { log, group, badge, banner, createLogger } from "./core";
+export { log, group, badge, banner, logo, createLogger } from "./core";
 export { presets } from "./presets";
 export type {
   FancyLogOptions,

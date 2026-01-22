@@ -25,4 +25,13 @@ export const presets: Record<FancyLogPreset, FancyLogOptions> = {
     shadow: "0 0 12px rgba(56,189,248,0.9)",
     bold: true,
   },
+  logo: {
+    color: "#38bdf8",
+    background: "#0f172a",
+    padding: "8px 12px",
+    radius: "10px",
+    bold: true,
+    font: "monospace",
+    lineHeight: "1.2",
+  },
 };

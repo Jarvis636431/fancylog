@@ -13,11 +13,12 @@ pnpm add fancylog
 ESM:
 
 ```js
-import { log, badge, banner, createLogger } from "fancylog";
+import { log, badge, banner, logo, createLogger } from "fancylog";
 
 log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
 badge("DEBUG", { background: "#111827", color: "#38bdf8" });
 banner("EASTER EGG", { gradient: ["#38bdf8", "#34d399", "#fbbf24"] });
+logo("fancylog");
 
 const ui = createLogger({
   color: "#fff",
@@ -42,6 +43,7 @@ log(message: string, options?: FancyLogOptions): void
 group(title: string, options?: FancyLogOptions, fn?: () => void): void
 badge(text: string, options?: FancyLogOptions): void
 banner(text: string, options?: FancyLogOptions): void
+logo(text?: string, options?: FancyLogOptions): void
 createLogger(defaultOptions?: FancyLogOptions): FancyLogger
 ```
 
@@ -49,7 +51,7 @@ createLogger(defaultOptions?: FancyLogOptions): FancyLogger
 
 ```ts
 type FancyLogOptions = {
-  preset?: "badge" | "banner" | "glow";
+  preset?: "badge" | "banner" | "glow" | "logo";
   color?: string;
   background?: string;
   bold?: boolean;
@@ -78,6 +80,12 @@ import { presets } from "fancylog";
 presets.badge;
 presets.banner;
 presets.glow;
+```
+
+## ASCII Logo
+
+```ts
+logo("hello world");
 ```
 
 ## Build

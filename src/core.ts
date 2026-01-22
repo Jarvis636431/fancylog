@@ -1,6 +1,7 @@
 import { formatText } from "./format";
 import { presets } from "./presets";
 import { mergeOptions } from "./utils";
+import { renderAscii } from "./ascii";
 import {
   FancyGroupFunction,
   FancyLogFunction,
@@ -50,6 +51,13 @@ export const banner: FancyLogFunction = (text, options) => {
   log(text, resolved);
 };
 
+export function logo(text = "fancylog", options?: FancyLogOptions): void {
+  const resolved = resolveOptions(options, "logo");
+  const art = renderAscii(text);
+  const { format, styles } = formatText(art, resolved);
+  console.log(format, ...styles);
+}
+
 export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
   return {
     log: (message, options) => log(message, mergeOptions(defaultOptions, options)),
@@ -57,5 +65,6 @@ export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
       group(title, mergeOptions(defaultOptions, options), fn),
     badge: (text, options) => badge(text, mergeOptions(defaultOptions, options)),
     banner: (text, options) => banner(text, mergeOptions(defaultOptions, options)),
+    logo: (text, options) => logo(text, mergeOptions(defaultOptions, options)),
   };
 }
