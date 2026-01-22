@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fancylog demo</title>
+  </head>
+  <body>
+    <h1>fancylog demo</h1>
+    <p>Open your browser console to see the output.</p>
+    <script type="module">
+      import { log, badge, banner, logo, combo, multi } from "../src/index.ts";
+
+      log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
+      badge("DEBUG");
+      banner("EASTER EGG", { gradient: ["#38bdf8", "#34d399", "#fbbf24"] });
+      logo("fancylog!");
+
+      combo("INFO", "Server started", {
+        label: { background: "#0ea5e9", color: "#fff" },
+        text: { color: "#0f172a" },
+        gap: " ",
+      });
+
+      multi(
+        [
+          { text: "API", options: { background: "#0f172a", color: "#fff", padding: "2px 6px", radius: "6px" } },
+          { text: "GET", options: { background: "#10b981", color: "#0f172a", padding: "2px 6px", radius: "6px" } },
+          { text: "/users", options: { color: "#0f172a" } },
+        ],
+        { gap: " " }
+      );
+    </script>
+  </body>
+</html>

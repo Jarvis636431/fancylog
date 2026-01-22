@@ -359,6 +359,96 @@ const FONT: Record<string, string[]> = {
     " ##",
     " ##",
   ],
+  "!": [
+    "   #   ",
+    "   #   ",
+    "   #   ",
+    "   #   ",
+    "   #   ",
+    "       ",
+    "   #   ",
+  ],
+  "@": [
+    " ##### ",
+    "#     #",
+    "# ### #",
+    "# # # #",
+    "# #### ",
+    "#      ",
+    " ##### ",
+  ],
+  "#": [
+    "  # #  ",
+    "  # #  ",
+    "#######",
+    "  # #  ",
+    "#######",
+    "  # #  ",
+    "  # #  ",
+  ],
+  "$": [
+    " ##### ",
+    "#  #   ",
+    "#  #   ",
+    " ##### ",
+    "   #  #",
+    "   #  #",
+    " ##### ",
+  ],
+  "%": [
+    "##   # ",
+    "##  #  ",
+    "   #   ",
+    "  #    ",
+    " #   ##",
+    "#   ## ",
+    "       ",
+  ],
+  "&": [
+    "  ###  ",
+    " #   # ",
+    "  ###  ",
+    " #   # ",
+    "#   #  ",
+    "#    # ",
+    " #### #",
+  ],
+  "+": [
+    "       ",
+    "   #   ",
+    "   #   ",
+    " ##### ",
+    "   #   ",
+    "   #   ",
+    "       ",
+  ],
+  "/": [
+    "      #",
+    "     # ",
+    "    #  ",
+    "   #   ",
+    "  #    ",
+    " #     ",
+    "#      ",
+  ],
+  ":": [
+    "   ",
+    " # ",
+    " # ",
+    "   ",
+    " # ",
+    " # ",
+    "   ",
+  ],
+  ";": [
+    "   ",
+    " # ",
+    " # ",
+    "   ",
+    " # ",
+    " # ",
+    "#  ",
+  ],
   "?": [
     " ##### ",
     "#     #",
@@ -373,11 +463,12 @@ const FONT: Record<string, string[]> = {
 const HEIGHT = 7;
 
 export function renderAscii(text: string): string {
-  const normalized = text.toUpperCase();
+  const normalized = text;
   const lines: string[] = Array.from({ length: HEIGHT }, () => "");
 
   for (const char of normalized) {
-    const glyph = FONT[char] || FONT["?"];
+    const upper = char.toUpperCase();
+    const glyph = FONT[char] || FONT[upper] || FONT["?"];
     for (let i = 0; i < HEIGHT; i += 1) {
       lines[i] += `${glyph[i]} `;
     }
