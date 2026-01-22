@@ -34,6 +34,7 @@ export type FancyLogger = {
   badge: FancyLogFunction;
   banner: FancyLogFunction;
   logo: (text?: string, options?: FancyLogOptions) => void;
+  pray: (options?: FancyLogOptions) => void;
   combo: (
     label: string,
     message: string,

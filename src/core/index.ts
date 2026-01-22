@@ -1,7 +1,7 @@
 import { formatText } from "@/format";
 import { themes } from "@/themes";
 import { mergeOptions, printMulti, printStyled, startGroup } from "@/utils";
-import { renderAscii } from "@/ascii";
+import { renderAscii, renderPrayer } from "@/ascii";
 import {
   FancyComboOptions,
   FancyMultiComboOptions,
@@ -56,6 +56,13 @@ export const banner: FancyLogFunction = (text, options) => {
 export function logo(text = "fancylog", options?: FancyLogOptions): void {
   const resolved = resolveOptions(options, "logo");
   const art = renderAscii(text);
+  const { format, styles, plain } = formatText(art, resolved);
+  printStyled(format, styles, plain);
+}
+
+export function pray(options?: FancyLogOptions): void {
+  const resolved = resolveOptions(options, "logo");
+  const art = renderPrayer();
   const { format, styles, plain } = formatText(art, resolved);
   printStyled(format, styles, plain);
 }

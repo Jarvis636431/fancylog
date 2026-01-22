@@ -61,6 +61,7 @@ fancylog.log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
 | `fancylog.badge` | `(text, options?)` | 使用 `badge` 主题输出 | 主题可被 options 覆盖 |
 | `fancylog.banner` | `(text, options?)` | 使用 `banner` 主题输出 | 主题可被 options 覆盖 |
 | `fancylog.logo` | `(text?, options?)` | ASCII 艺术字输出 | `text` 会被渲染为大字 |
+| `fancylog.pray` | `(options?)` | ASCII 祈祷图标输出 | 使用 logo 主题 |
 | `fancylog.combo` | `(label, message, options?)` | 两段组合输出 | 默认 `label` 使用 `badge` 主题 |
 | `fancylog.multi` | `(segments, options?)` | 多段组合输出 | `options.gap` 控制间距 |
 | `fancylog.createLogger` | `(defaultOptions?)` | 创建带默认样式的实例 | 适合统一风格 |
@@ -150,6 +151,12 @@ fancylog.log("Heads up", { theme: "warning" });
 
 ```ts
 fancylog.logo("hello world");
+```
+
+## ASCII Pray
+
+```ts
+fancylog.pray();
 ```
 
 ## 自动降级机制
