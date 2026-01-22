@@ -3,6 +3,7 @@ import { presets } from "./presets";
 import { mergeOptions } from "./utils";
 import { renderAscii } from "./ascii";
 import {
+  FancyComboOptions,
   FancyGroupFunction,
   FancyLogFunction,
   FancyLogOptions,
@@ -58,6 +59,20 @@ export function logo(text = "fancylog", options?: FancyLogOptions): void {
   console.log(format, ...styles);
 }
 
+export function combo(
+  label: string,
+  message: string,
+  options?: FancyComboOptions
+): void {
+  const labelOptions = resolveOptions(options?.label, "badge");
+  const textOptions = resolveOptions(options?.text);
+  const labelOut = formatText(String(label), labelOptions);
+  const textOut = formatText(String(message), textOptions);
+  const format = `${labelOut.format} ${textOut.format}`;
+  const styles = [...labelOut.styles, ...textOut.styles];
+  console.log(format, ...styles);
+}
+
 export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
   return {
     log: (message, options) => log(message, mergeOptions(defaultOptions, options)),
@@ -66,5 +81,10 @@ export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
     badge: (text, options) => badge(text, mergeOptions(defaultOptions, options)),
     banner: (text, options) => banner(text, mergeOptions(defaultOptions, options)),
     logo: (text, options) => logo(text, mergeOptions(defaultOptions, options)),
+    combo: (label, message, options) =>
+      combo(label, message, {
+        label: mergeOptions(defaultOptions, options?.label),
+        text: mergeOptions(defaultOptions, options?.text),
+      }),
   };
 }
