@@ -139,11 +139,13 @@ export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {
     badge: (text, options) => badge(text, mergeOptions(defaultOptions, options)),
     banner: (text, options) => banner(text, mergeOptions(defaultOptions, options)),
     logo: (text, options) => logo(text, mergeOptions(defaultOptions, options)),
-    combo: (label, message, options) =>
-      combo(label, message, {
-        label: mergeOptions(defaultOptions, options?.label),
-        text: mergeOptions(defaultOptions, options?.text),
-      }),
+    pray: (options) => pray(mergeOptions(defaultOptions, options)),
+    cat: (options) => cat(mergeOptions(defaultOptions, options)),
+    rocket: (options) => rocket(mergeOptions(defaultOptions, options)),
+    coffee: (options) => coffee(mergeOptions(defaultOptions, options)),
+    party: (options) => party(mergeOptions(defaultOptions, options)),
+    wave: (options) => wave(mergeOptions(defaultOptions, options)),
+    combo: (label, message, options) => combo(label, message, options),
     multi: (segments, options) => {
       const resolvedSegments = segments.map((segment) => ({
         text: segment.text,
