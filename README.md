@@ -207,4 +207,5 @@ pnpm run build
 pnpm run lint
 pnpm run format
 pnpm run test
+pnpm run test:coverage
 ```
