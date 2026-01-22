@@ -1,6 +1,6 @@
 import { formatText } from "./format";
 import { themes } from "./themes";
-import { mergeOptions, supportsConsoleStyles } from "./utils";
+import { mergeOptions, printMulti, printStyled, startGroup } from "./utils";
 import { renderAscii } from "./ascii";
 import {
   FancyComboOptions,
@@ -12,40 +12,6 @@ import {
   FancyLogger,
   FancyLogTheme,
 } from "./types";
-
-function printStyled(format: string, styles: string[], plain: string): void {
-  if (supportsConsoleStyles()) {
-    console.log(format, ...styles);
-  } else {
-    console.log(plain);
-  }
-}
-
-function startGroup(
-  collapsed: boolean | undefined,
-  format: string,
-  styles: string[],
-  plain: string
-): void {
-  const start = collapsed ? console.groupCollapsed : console.group;
-  if (supportsConsoleStyles()) {
-    start(format, ...styles);
-  } else {
-    start(plain);
-  }
-}
-
-function printMulti(
-  formats: string[],
-  styles: string[],
-  plainParts: string[]
-): void {
-  if (supportsConsoleStyles()) {
-    console.log(formats.join(""), ...styles);
-  } else {
-    console.log(plainParts.join(""));
-  }
-}
 
 function resolveOptions(
   options?: FancyLogOptions,
