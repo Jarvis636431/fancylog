@@ -4,3 +4,4 @@ dist/
 *.tsbuildinfo
 .DS_Store
 pnpm-debug.log*
+coverage/

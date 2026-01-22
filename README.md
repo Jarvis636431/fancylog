@@ -126,3 +126,23 @@ pnpm run build
 ```
 
 Outputs ESM + CJS + types into `dist/`.
+
+## Quality
+
+Lint:
+
+```bash
+pnpm run lint
+```
+
+Format:
+
+```bash
+pnpm run format
+```
+
+Tests:
+
+```bash
+pnpm run test
+```
