@@ -11,3 +11,7 @@ export function normalizeSize(value?: number | string): string | undefined {
   }
   return value;
 }
+
+export function supportsConsoleStyles(): boolean {
+  return typeof window !== "undefined" && typeof window.document !== "undefined";
+}

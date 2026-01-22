@@ -3,6 +3,7 @@ import { combo, multi } from "../src/core";
 
 describe("combo/multi", () => {
   it("multi concatenates segments with a gap", () => {
+    vi.stubGlobal("window", { document: {} });
     const spy = vi.spyOn(console, "log").mockImplementation(() => {});
     multi(
       [
@@ -15,9 +16,11 @@ describe("combo/multi", () => {
     const [format] = spy.mock.calls[0];
     expect(format).toBe("%cA | %cB");
     spy.mockRestore();
+    vi.unstubAllGlobals();
   });
 
   it("combo formats two segments", () => {
+    vi.stubGlobal("window", { document: {} });
     const spy = vi.spyOn(console, "log").mockImplementation(() => {});
     combo("INFO", "Started");
     expect(spy).toHaveBeenCalledTimes(1);
@@ -26,5 +29,6 @@ describe("combo/multi", () => {
     expect(typeof style1).toBe("string");
     expect(typeof style2).toBe("string");
     spy.mockRestore();
+    vi.unstubAllGlobals();
   });
 });

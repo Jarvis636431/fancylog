@@ -1,6 +1,6 @@
 import { formatText } from "./format";
 import { themes } from "./themes";
-import { mergeOptions } from "./utils";
+import { mergeOptions, supportsConsoleStyles } from "./utils";
 import { renderAscii } from "./ascii";
 import {
   FancyComboOptions,
@@ -12,6 +12,40 @@ import {
   FancyLogger,
   FancyLogTheme,
 } from "./types";
+
+function printStyled(format: string, styles: string[], plain: string): void {
+  if (supportsConsoleStyles()) {
+    console.log(format, ...styles);
+  } else {
+    console.log(plain);
+  }
+}
+
+function startGroup(
+  collapsed: boolean | undefined,
+  format: string,
+  styles: string[],
+  plain: string
+): void {
+  const start = collapsed ? console.groupCollapsed : console.group;
+  if (supportsConsoleStyles()) {
+    start(format, ...styles);
+  } else {
+    start(plain);
+  }
+}
+
+function printMulti(
+  formats: string[],
+  styles: string[],
+  plainParts: string[]
+): void {
+  if (supportsConsoleStyles()) {
+    console.log(formats.join(""), ...styles);
+  } else {
+    console.log(plainParts.join(""));
+  }
+}
 
 function resolveOptions(
   options?: FancyLogOptions,
@@ -26,15 +60,14 @@ function resolveOptions(
 
 export const log: FancyLogFunction = (message, options) => {
   const resolved = resolveOptions(options);
-  const { format, styles } = formatText(String(message), resolved);
-  console.log(format, ...styles);
+  const { format, styles, plain } = formatText(String(message), resolved);
+  printStyled(format, styles, plain);
 };
 
 export const group: FancyGroupFunction = (title, options, fn) => {
   const resolved = resolveOptions(options);
-  const { format, styles } = formatText(String(title), resolved);
-  const start = resolved.collapsed ? console.groupCollapsed : console.group;
-  start(format, ...styles);
+  const { format, styles, plain } = formatText(String(title), resolved);
+  startGroup(resolved.collapsed, format, styles, plain);
   if (typeof fn === "function") {
     try {
       fn();
@@ -57,8 +90,8 @@ export const banner: FancyLogFunction = (text, options) => {
 export function logo(text = "fancylog", options?: FancyLogOptions): void {
   const resolved = resolveOptions(options, "logo");
   const art = renderAscii(text);
-  const { format, styles } = formatText(art, resolved);
-  console.log(format, ...styles);
+  const { format, styles, plain } = formatText(art, resolved);
+  printStyled(format, styles, plain);
 }
 
 export function combo(
@@ -82,17 +115,20 @@ export function multi(
   const gap = options?.gap ?? " ";
   const formats: string[] = [];
   const styles: string[] = [];
+  const plainParts: string[] = [];
 
   segments.forEach((segment, index) => {
     const out = formatText(String(segment.text), segment.options || {});
     formats.push(out.format);
     styles.push(...out.styles);
+    plainParts.push(out.plain);
     if (index < segments.length - 1) {
       formats.push(gap);
+      plainParts.push(gap);
     }
   });
 
-  console.log(formats.join(""), ...styles);
+  printMulti(formats, styles, plainParts);
 }
 
 export function createLogger(defaultOptions?: FancyLogOptions): FancyLogger {

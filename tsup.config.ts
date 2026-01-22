@@ -6,6 +6,7 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
+  cjsInterop: true,
   platform: "browser",
   target: "es2018",
   treeshake: true,

@@ -24,7 +24,7 @@ export function buildCss(options: FancyLogOptions): string {
 export function formatText(
   text: string,
   options: FancyLogOptions
-): { format: string; styles: string[] } {
+): { format: string; styles: string[]; plain: string } {
   if (options.gradient && options.gradient.length >= 2) {
     const styles: string[] = [];
     const parts: string[] = [];
@@ -37,11 +37,12 @@ export function formatText(
       parts.push(`%c${text[i]}`);
     }
 
-    return { format: parts.join(""), styles };
+    return { format: parts.join(""), styles, plain: text };
   }
 
   return {
     format: `%c${text}`,
     styles: [buildCss(options)],
+    plain: text,
   };
 }
