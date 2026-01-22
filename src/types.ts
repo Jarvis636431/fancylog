@@ -1,7 +1,7 @@
-export type FancyLogPreset = "badge" | "banner" | "glow" | "logo";
+export type FancyLogTheme = "badge" | "banner" | "glow" | "logo" | (string & {});
 
 export type FancyLogOptions = {
-  preset?: FancyLogPreset;
+  theme?: FancyLogTheme;
   color?: string;
   background?: string;
   bold?: boolean;

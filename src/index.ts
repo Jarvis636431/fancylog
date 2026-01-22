@@ -1,5 +1,5 @@
 import { log, group, badge, banner, logo, combo, multi, createLogger } from "./core";
-import { presets } from "./presets";
+import { themes, registerTheme } from "./themes";
 export type {
   FancyComboOptions,
   FancyMultiComboOptions,
@@ -8,7 +8,7 @@ export type {
   FancyLogger,
   FancyLogFunction,
   FancyGroupFunction,
-  FancyLogPreset,
+  FancyLogTheme,
 } from "./types";
 
 const fancylog = {
@@ -20,7 +20,8 @@ const fancylog = {
   combo,
   multi,
   createLogger,
-  presets,
+  themes,
+  registerTheme,
 };
 
 export default fancylog;

@@ -60,7 +60,7 @@ fancylog.createLogger(defaultOptions?: FancyLogOptions): FancyLogger
 
 ```ts
 type FancyLogOptions = {
-  preset?: "badge" | "banner" | "glow" | "logo";
+  theme?: "badge" | "banner" | "glow" | "logo" | string;
   color?: string;
   background?: string;
   bold?: boolean;
@@ -96,12 +96,26 @@ type FancyMultiComboOptions = {
 };
 ```
 
-## Presets
+## Themes
 
 ```js
-fancylog.presets.badge;
-fancylog.presets.banner;
-fancylog.presets.glow;
+fancylog.themes.badge;
+fancylog.themes.banner;
+fancylog.themes.glow;
+```
+
+Register a custom theme:
+
+```js
+fancylog.registerTheme("warning", {
+  color: "#111827",
+  background: "#fbbf24",
+  padding: "2px 6px",
+  radius: "6px",
+  bold: true,
+});
+
+fancylog.log("Heads up", { theme: "warning" });
 ```
 
 ## ASCII Logo

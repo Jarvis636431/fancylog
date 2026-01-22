@@ -1,5 +1,5 @@
 import { formatText } from "./format";
-import { presets } from "./presets";
+import { themes } from "./themes";
 import { mergeOptions } from "./utils";
 import { renderAscii } from "./ascii";
 import {
@@ -10,18 +10,18 @@ import {
   FancyLogFunction,
   FancyLogOptions,
   FancyLogger,
-  FancyLogPreset,
+  FancyLogTheme,
 } from "./types";
 
 function resolveOptions(
   options?: FancyLogOptions,
-  presetName?: FancyLogPreset
+  themeName?: FancyLogTheme
 ): FancyLogOptions {
-  const preset = presetName ? presets[presetName] : undefined;
-  if (options && options.preset) {
-    return mergeOptions(mergeOptions(presets[options.preset], preset), options);
+  const theme = themeName ? themes[themeName] : undefined;
+  if (options && options.theme) {
+    return mergeOptions(mergeOptions(themes[options.theme], theme), options);
   }
-  return mergeOptions(preset, options);
+  return mergeOptions(theme, options);
 }
 
 export const log: FancyLogFunction = (message, options) => {

@@ -1,6 +1,6 @@
-import { FancyLogOptions, FancyLogPreset } from "./types";
+import { FancyLogOptions } from "./types";
 
-export const presets: Record<FancyLogPreset, FancyLogOptions> = {
+export const themes: Record<string, FancyLogOptions> = {
   badge: {
     color: "#ffffff",
     background: "#111827",
@@ -35,3 +35,7 @@ export const presets: Record<FancyLogPreset, FancyLogOptions> = {
     lineHeight: "1.2",
   },
 };
+
+export function registerTheme(name: string, options: FancyLogOptions): void {
+  themes[name] = options;
+}
