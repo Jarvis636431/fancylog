@@ -1,4 +1,19 @@
-import { log, group, badge, banner, logo, pray, combo, multi, createLogger } from "@/core";
+import {
+  log,
+  group,
+  badge,
+  banner,
+  logo,
+  pray,
+  cat,
+  rocket,
+  coffee,
+  party,
+  wave,
+  combo,
+  multi,
+  createLogger,
+} from "@/core";
 import { themes, registerTheme } from "@/themes";
 export type {
   FancyComboOptions,
@@ -18,6 +33,11 @@ const fancylog = {
   banner,
   logo,
   pray,
+  cat,
+  rocket,
+  coffee,
+  party,
+  wave,
   combo,
   multi,
   createLogger,

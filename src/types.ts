@@ -35,6 +35,11 @@ export type FancyLogger = {
   banner: FancyLogFunction;
   logo: (text?: string, options?: FancyLogOptions) => void;
   pray: (options?: FancyLogOptions) => void;
+  cat: (options?: FancyLogOptions) => void;
+  rocket: (options?: FancyLogOptions) => void;
+  coffee: (options?: FancyLogOptions) => void;
+  party: (options?: FancyLogOptions) => void;
+  wave: (options?: FancyLogOptions) => void;
   combo: (
     label: string,
     message: string,

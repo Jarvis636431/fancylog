@@ -1,7 +1,7 @@
 import { formatText } from "@/format";
 import { themes } from "@/themes";
 import { mergeOptions, printMulti, printStyled, startGroup } from "@/utils";
-import { renderAscii, renderPrayer } from "@/ascii";
+import { renderAscii, renderIcon, renderPrayer } from "@/ascii";
 import {
   FancyComboOptions,
   FancyMultiComboOptions,
@@ -65,6 +65,33 @@ export function pray(options?: FancyLogOptions): void {
   const art = renderPrayer();
   const { format, styles, plain } = formatText(art, resolved);
   printStyled(format, styles, plain);
+}
+
+function icon(name: "cat" | "rocket" | "coffee" | "party" | "wave", options?: FancyLogOptions): void {
+  const resolved = resolveOptions(options, "logo");
+  const art = renderIcon(name);
+  const { format, styles, plain } = formatText(art, resolved);
+  printStyled(format, styles, plain);
+}
+
+export function cat(options?: FancyLogOptions): void {
+  icon("cat", options);
+}
+
+export function rocket(options?: FancyLogOptions): void {
+  icon("rocket", options);
+}
+
+export function coffee(options?: FancyLogOptions): void {
+  icon("coffee", options);
+}
+
+export function party(options?: FancyLogOptions): void {
+  icon("party", options);
+}
+
+export function wave(options?: FancyLogOptions): void {
+  icon("wave", options);
 }
 
 export function combo(
