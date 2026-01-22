@@ -44,6 +44,16 @@ fancylog.multi(
 );
 ```
 
+按需引用（Tree-shaking）：
+
+```js
+import { fancyLog, fancyBadge, fancyCombo } from "fancylog";
+
+fancyLog("Hello Fancy", { color: "#38bdf8", bold: true });
+fancyBadge("DEBUG");
+fancyCombo("INFO", "Server started");
+```
+
 CJS：
 
 ```js

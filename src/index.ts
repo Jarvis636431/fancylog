@@ -46,3 +46,20 @@ const fancylog = {
 };
 
 export default fancylog;
+
+export const fancyLog = log;
+export const fancyGroup = group;
+export const fancyBadge = badge;
+export const fancyBanner = banner;
+export const fancyLogo = logo;
+export const fancyPray = pray;
+export const fancyCat = cat;
+export const fancyRocket = rocket;
+export const fancyCoffee = coffee;
+export const fancyParty = party;
+export const fancyWave = wave;
+export const fancyCombo = combo;
+export const fancyMulti = multi;
+export const fancyCreateLogger = createLogger;
+export const fancyThemes = themes;
+export const fancyRegisterTheme = registerTheme;
