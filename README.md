@@ -1,6 +1,12 @@
-# fancylog
+<h1 align="center">fancylog</h1>
 
-一个用于浏览器控制台的样式化日志工具，适合做开发彩蛋和更清晰的调试输出。
+<p align="center">
+  <img src="assets/logo.svg" alt="fancylog logo" />
+</p>
+
+<p align="center">
+  一个用于浏览器控制台的样式化日志工具，适合做开发彩蛋和更清晰的调试输出。
+</p>
 
 ## 特性
 
@@ -28,11 +34,15 @@ fancylog.badge("DEBUG", { background: "#111827", color: "#38bdf8" });
 fancylog.banner("EASTER EGG", { gradient: ["#38bdf8", "#34d399", "#fbbf24"] });
 fancylog.logo("fancylog");
 
-fancylog.combo("INFO", "Server started", {
-  label: { background: "#0ea5e9", color: "#fff" },
-  text: { color: "#0f172a" },
-  gap: " ",
-});
+fancylog.combo("INFO", "Server started", { gap: " " });
+
+fancylog.multi(
+  [
+    { text: "INFO", options: { theme: "badge" } },
+    { text: "Server started" },
+  ],
+  { gap: " " }
+);
 
 fancylog.multi(
   [
