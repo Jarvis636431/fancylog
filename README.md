@@ -13,19 +13,19 @@ pnpm add fancylog
 ESM:
 
 ```js
-import { log, badge, banner, logo, combo, multi, createLogger } from "fancylog";
+import fancylog from "fancylog";
 
-log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
-badge("DEBUG", { background: "#111827", color: "#38bdf8" });
-banner("EASTER EGG", { gradient: ["#38bdf8", "#34d399", "#fbbf24"] });
-logo("fancylog");
-combo("INFO", "Server started", {
+fancylog.log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
+fancylog.badge("DEBUG", { background: "#111827", color: "#38bdf8" });
+fancylog.banner("EASTER EGG", { gradient: ["#38bdf8", "#34d399", "#fbbf24"] });
+fancylog.logo("fancylog");
+fancylog.combo("INFO", "Server started", {
   label: { background: "#0ea5e9", color: "#fff" },
   text: { color: "#0f172a" },
   gap: " ",
 });
 
-multi(
+fancylog.multi(
   [
     { text: "API", options: { background: "#0f172a", color: "#fff", padding: "2px 6px", radius: "6px" } },
     { text: "GET", options: { background: "#10b981", color: "#0f172a", padding: "2px 6px", radius: "6px" } },
@@ -33,34 +33,27 @@ multi(
   ],
   { gap: " " }
 );
-
-const ui = createLogger({
-  color: "#fff",
-  background: "#0f172a",
-  padding: "4px 8px",
-});
-ui.log("Scoped logger");
 ```
 
 CJS:
 
 ```js
-const { log, badge, banner, createLogger } = require("fancylog");
+const fancylog = require("fancylog");
 
-log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
+fancylog.log("Hello Fancy", { color: "#38bdf8", bold: true, size: 18 });
 ```
 
 ## API
 
 ```ts
-log(message: string, options?: FancyLogOptions): void
-group(title: string, options?: FancyLogOptions, fn?: () => void): void
-badge(text: string, options?: FancyLogOptions): void
-banner(text: string, options?: FancyLogOptions): void
-logo(text?: string, options?: FancyLogOptions): void
-combo(label: string, message: string, options?: FancyComboOptions): void
-multi(segments: FancySegment[], options?: FancyMultiComboOptions): void
-createLogger(defaultOptions?: FancyLogOptions): FancyLogger
+fancylog.log(message: string, options?: FancyLogOptions): void
+fancylog.group(title: string, options?: FancyLogOptions, fn?: () => void): void
+fancylog.badge(text: string, options?: FancyLogOptions): void
+fancylog.banner(text: string, options?: FancyLogOptions): void
+fancylog.logo(text?: string, options?: FancyLogOptions): void
+fancylog.combo(label: string, message: string, options?: FancyComboOptions): void
+fancylog.multi(segments: FancySegment[], options?: FancyMultiComboOptions): void
+fancylog.createLogger(defaultOptions?: FancyLogOptions): FancyLogger
 ```
 
 ## Options
@@ -106,17 +99,15 @@ type FancyMultiComboOptions = {
 ## Presets
 
 ```js
-import { presets } from "fancylog";
-
-presets.badge;
-presets.banner;
-presets.glow;
+fancylog.presets.badge;
+fancylog.presets.banner;
+fancylog.presets.glow;
 ```
 
 ## ASCII Logo
 
 ```ts
-logo("hello world");
+fancylog.logo("hello world");
 ```
 
 ## Build
